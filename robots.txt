@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jackswebsite.dev/sitemap.xml

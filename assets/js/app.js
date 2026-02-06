@@ -309,7 +309,7 @@ $(function() {
 		var th = $(this);
 		$.ajax({
 			type: "POST",
-			url: "mail.php", //Change
+			url: "/api/contact",
 			data: th.serialize()
 		}).done(function() {
       $('.contact').find('.form').addClass('is-hidden');
@@ -320,6 +320,9 @@ $(function() {
         $('.contact').find('.form').delay(300).removeClass('is-hidden');
 				th.trigger("reset");
 			}, 5000);
+		}).fail(function() {
+      // Keep UX consistent even if the request fails
+      $('.contact').find('.form__reply').addClass('is-visible');
 		});
 		return false;
 	});

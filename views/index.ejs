@@ -142,7 +142,7 @@
       <!-- Header Controls Start -->
       <div class="header__controls d-flex justify-content-end">
         <button id="color-switcher" class="color-switcher header__switcher btn" type="button" role="switch" aria-label="light/dark mode" aria-checked="true"></button>
-        <a id="notify-trigger" class="header__trigger btn" href="mailto:contact@jackswebsite.dev?subject=Message%20from%20freelance%20site">
+        <a id="notify-trigger" class="header__trigger btn" data-analytics="cta" data-analytics-name="header_email_cta" href="mailto:contact@jackswebsite.dev?subject=Message%20from%20freelance%20site">
           <span class="trigger__caption">Let's Talk</span>
           <i class="ph-bold ph-chat-dots"></i>
         </a>
@@ -248,7 +248,7 @@ I'm a freelance developer and designer based in Loughborough, UK, specializing i
           
           
           <div class="avatar__btnholder">
-            <a style="margin-top: 5%" class="btn btn-default btn-fullwidth btn-hover btn-hover-accent" href="#contact" target="_blank">
+            <a style="margin-top: 5%" class="btn btn-default btn-fullwidth btn-hover btn-hover-accent" data-analytics="cta" data-analytics-name="hero_work_together" href="#contact" target="_blank">
               <span class="btn-caption">Let's Work Together!</span>
             </a>
           </div>
@@ -276,11 +276,11 @@ I'm a freelance developer and designer based in Loughborough, UK, specializing i
             </p>
             <h1 class="headline__title animate-headline">Loughborough freelance web development</h1>
             <div class="headline__btnholder d-flex flex-column flex-sm-row">
-              <a class="btn mobile-vertical btn-default btn-hover btn-hover-accent-mobile animate-headline" href="#portfolio">
+              <a class="btn mobile-vertical btn-default btn-hover btn-hover-accent-mobile animate-headline" data-analytics="cta" data-analytics-name="hero_my_work" href="#portfolio">
                 <span class="btn-caption">My Work</span>
                 <i class="ph-bold ph-squares-four"></i>
               </a>
-              <a class="btn mobile-vertical btn-default btn-hover btn-hover-outline-mobile animate-headline" href="https://profile.indeed.com/p/jackp-sfnzfwl" target="_blank">
+              <a class="btn mobile-vertical btn-default btn-hover btn-hover-outline-mobile animate-headline" data-analytics="cta" data-analytics-name="hero_download_cv" href="https://profile.indeed.com/p/jackp-sfnzfwl" target="_blank">
                 <span class="btn-caption">Download CV</span>
                 <i class="ph-bold ph-download-simple"></i>
               </a>
@@ -339,18 +339,18 @@ I'm a freelance developer and designer based in Loughborough, UK, specializing i
     
                 <!-- Works Gallery Single Item Start -->
                 <figure class="col-12 col-md-6 gallery__item grid-item animate-card-2" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                  <a href="/assets/img/works/01.png" data-image="/assets/img/works/01.png" class="gallery__link" itemprop="contentUrl" data-size="1890x949">
-                    <img src="/assets/img/works/01-1.png"     class="gallery__image"
+                  <a href="/assets/img/works/sample3.PNG" data-image="/assets/img/works/sample3.PNG" class="gallery__link" itemprop="contentUrl" data-size="533x904">
+                    <img src="/assets/img/works/sample3.PNG"     class="gallery__image"
                                                       itemprop="thumbnail"
                                                       alt="Custom website development project by freelance web developer"
                                                       title="Professional Website Development Project"
                                                       loading="lazy"
                                                       decoding="async"
-                                                      width="945"
-                                                      height="475">
+                                                      width="533"
+                                                      height="904">
                   </a>
                   <figcaption class="gallery__descr" itemprop="caption description">
-                    <h5>Simple Website Creation - <a style="color: #CEC4EF" href="https://www.freelancer.com/projects/website-design/Simple-Website-Creation-38841333/details" target="_blank"> Link </a></h5>
+                    <h5>Simple Website Creation</h5>
                     <div class="card__tags d-flex flex-wrap">
                       <span class="rounded-tag opposite">HTML5/CSS3</span>
                       <span class="rounded-tag opposite">Bootstrap 4</span>
@@ -364,7 +364,7 @@ I'm a freelance developer and designer based in Loughborough, UK, specializing i
     
                 <!-- Works Gallery Single Item Start -->
                 <figure class="col-12 col-md-6 gallery__item grid-item animate-card-2" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                  <a href="/assets/img/works/02.png" data-image="/assets/img/works/02.png" class="gallery__link" itemprop="contentUrl" data-size="1400x1400">
+                  <a href="/assets/img/works/02.png" data-image="/assets/img/works/02.png" class="gallery__link" itemprop="contentUrl" data-size="1902x1750">
                     <img src="/assets/img/works/02.png"   class="gallery__image"
                                                   itemprop="thumbnail"
                                                   alt="Custom Nodejs React website development project by freelance web developer"
@@ -375,7 +375,7 @@ I'm a freelance developer and designer based in Loughborough, UK, specializing i
                                                   height="475">
                   </a>
                   <figcaption class="gallery__descr opposite" itemprop="caption description">
-                    <h5 class="opposite">VPS Hosting Company</h5>
+                    <h5 class="opposite">VPS Hosting Solutions</h5>
                     <div class="card__tags d-flex flex-wrap">
                       <span class="rounded-tag">Nodejs React</span>
                       <span class="rounded-tag">Proxmox API</span>
@@ -393,6 +393,69 @@ I'm a freelance developer and designer based in Loughborough, UK, specializing i
             </div>
           </div>
           <!-- Content Block - Works Gallery End -->
+
+
+          <!-- Content Block - Works Gallery Start -->
+          <div class="content__block grid-block">
+            <div class="container-fluid px-0 inner__gallery">
+              <div class="row gx-0 my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+    
+                <!-- Works Gallery Single Item Start -->
+                <figure class="col-12 col-md-6 gallery__item grid-item animate-card-2" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                  <a href="/assets/img/works/sample5.png" data-image="/assets/img/works/sample5.png" class="gallery__link" itemprop="contentUrl" data-size="533x904">
+                    <img src="/assets/img/works/sample5.png"     class="gallery__image"
+                                                      itemprop="thumbnail"
+                                                      alt="Custom full stack nodejs website I built for my company"
+                                                      title="Nodejs CRM and main website"
+                                                      loading="lazy"
+                                                      decoding="async"
+                                                      width="533"
+                                                      height="904">
+                  </a>
+                  <figcaption class="gallery__descr" itemprop="caption description">
+                    <h5>Local Website Design</h5>
+                    <div class="card__tags d-flex flex-wrap">
+                      <span class="rounded-tag opposite">Nodejs</span>
+                      <span class="rounded-tag opposite">HTML5/CSS3</span>
+                      <span class="rounded-tag opposite">Bootstrap</span>
+                      <span class="rounded-tag opposite">React</span>
+                    </div>
+                    <p class="small">Custom full stack nodejs website I built for my company, <a href="https://localwebsitedesign.services?utm_source=jackswebsitedev"> Local Website Design </a>, it includes a full CRM backend with full UTM tracking, email outreach tracking and much much more.
+                    </p>
+                  </figcaption>
+                </figure>
+                <!-- Works Gallery Single Item End -->
+    
+                <!-- Works Gallery Single Item Start -->
+                <figure class="col-12 col-md-6 gallery__item grid-item animate-card-2" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                  <a href="/assets/img/works/sample4.png" data-image="/assets/img/works/sample4.png" class="gallery__link" itemprop="contentUrl" data-size="533x904">
+                    <img src="/assets/img/works/sample4.png"   class="gallery__image"
+                                                  itemprop="thumbnail"
+                                                  alt="CR3STED Hosting main storefront website main in wordpress"
+                                                  title="Professional VPS Hosting dashboard for CR3STED Hosting"
+                                                  loading="lazy"
+                                                  decoding="async"
+                                                  width="533"
+                                                  height="904">
+                  </a>
+                  <figcaption class="gallery__descr opposite" itemprop="caption description">
+                    <h5 class="opposite">CR3STED Hosting</h5>
+                    <div class="card__tags d-flex flex-wrap">
+                      <span class="rounded-tag">WordPress</span>
+                      <span class="rounded-tag">Yoast SEO</span>
+                      <span class="rounded-tag">Elementor</span>
+                    </div>
+                    <p class="small">This is a website I made for CR3STED Hosting's main storefront, it was a minimalistic design optimized for search engine optimisation and load speed.
+                    </p>
+                  </figcaption>
+                </figure>
+                <!-- Works Gallery Single Item End -->
+
+    
+              </div>
+            </div>
+          </div>
+          <!-- Content Block - Works Gallery End -->          
 
         </section>
         <!-- Portfolio Section End -->
@@ -477,7 +540,7 @@ I'm a freelance developer and designer based in Loughborough, UK, specializing i
                   </p>
 
                   <div class="btn-group about-descr__btnholder animate-in-up">
-                    <a class="btn mobile-vertical btn-default btn-hover btn-hover-accent" href="https://profile.indeed.com/p/jackp-sfnzfwl" target="_blank">
+                    <a class="btn mobile-vertical btn-default btn-hover btn-hover-accent" data-analytics="cta" data-analytics-name="about_download_cv" href="https://profile.indeed.com/p/jackp-sfnzfwl" target="_blank">
                       <span class="btn-caption">Download CV</span>
                       <i class="ph-bold ph-download-simple"></i>
                     </a>
@@ -575,7 +638,7 @@ I'm a freelance developer and designer based in Loughborough, UK, specializing i
                       <textarea name="Message" placeholder="A Few Words*" required></textarea>
                     </div>
                     <div class="col-12 form__item animate-in-up">
-                      <button class="btn btn-default btn-hover btn-hover-accent" type="submit">
+                      <button class="btn btn-default btn-hover btn-hover-accent" data-analytics="cta" data-analytics-name="contact_send_message" type="submit">
                         <span class="btn-caption">Send Message</span>
                         <i class="ph-bold ph-paper-plane-tilt"></i>
                       </button>

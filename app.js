@@ -9,6 +9,7 @@ dotenv.config();
 
 const indexRouter = require('./routers/indexRoutes');
 const contactRouter = require('./routers/contactRoutes');
+const analyticsRouter = require('./routers/analyticsRoutes');
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.use('/api/contact', contactRouter);
+app.use('/api/analytics', analyticsRouter);
 
 app.get('/robots.txt', (req, res) => {
   res.sendFile(path.join(__dirname, 'robots.txt'));

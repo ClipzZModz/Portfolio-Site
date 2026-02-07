@@ -394,6 +394,128 @@ $(function() {
   // PhotoSwipe Gallery Images Replace End
   // --------------------------------------------- //
 
+  // --------------------------------------------- //
+  // Analytics Tracking Start
+  // --------------------------------------------- //
+  function sendAnalyticsEvent(type, name, data) {
+    if (!type) {
+      return;
+    }
+    const payload = {
+      type: type,
+      name: name || null,
+      data: data || null
+    };
+
+    if (navigator.sendBeacon) {
+      const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+      navigator.sendBeacon('/api/analytics/event', blob);
+      return;
+    }
+
+    fetch('/api/analytics/event', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      keepalive: true
+    }).catch(function() {});
+  }
+
+  const trackedCtas = document.querySelectorAll('[data-analytics="cta"]');
+  if (trackedCtas.length) {
+    const seenCtas = new Set();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+        const target = entry.target;
+        if (seenCtas.has(target)) {
+          return;
+        }
+        seenCtas.add(target);
+        const ctaName = target.getAttribute('data-analytics-name') || target.textContent.trim().slice(0, 80);
+        sendAnalyticsEvent('cta_load', ctaName, {
+          element: target.tagName.toLowerCase()
+        });
+      });
+    }, { threshold: 0.6 });
+
+    trackedCtas.forEach((cta) => observer.observe(cta));
+
+    trackedCtas.forEach((cta) => {
+      cta.addEventListener('click', () => {
+        const ctaName = cta.getAttribute('data-analytics-name') || cta.textContent.trim().slice(0, 80);
+        sendAnalyticsEvent('cta_click', ctaName, {
+          element: cta.tagName.toLowerCase()
+        });
+      });
+    });
+  }
+
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    let formStarted = false;
+    const markFormStart = () => {
+      if (formStarted) {
+        return;
+      }
+      formStarted = true;
+      sendAnalyticsEvent('form_start', 'contact_form', {
+        method: contactForm.getAttribute('method') || 'post'
+      });
+    };
+
+    contactForm.addEventListener('focusin', markFormStart, { once: true });
+    contactForm.addEventListener('input', markFormStart, { once: true });
+
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    if (submitButton) {
+      submitButton.addEventListener('click', () => {
+        const label = submitButton.textContent.trim().slice(0, 80);
+        sendAnalyticsEvent('cta_click', 'contact_form_submit', {
+          label: label
+        });
+      });
+    }
+  }
+
+  const scrollThresholds = [25, 50, 75, 100];
+  const seenScroll = new Set();
+  let scrollTicking = false;
+
+  function handleScroll() {
+    scrollTicking = false;
+    const doc = document.documentElement;
+    const scrollTop = window.pageYOffset || doc.scrollTop || 0;
+    const scrollHeight = doc.scrollHeight || document.body.scrollHeight || 0;
+    const viewportHeight = window.innerHeight || doc.clientHeight || 0;
+    const maxScroll = Math.max(scrollHeight - viewportHeight, 1);
+    const percent = Math.min(100, Math.round((scrollTop / maxScroll) * 100));
+
+    scrollThresholds.forEach((threshold) => {
+      if (percent >= threshold && !seenScroll.has(threshold)) {
+        seenScroll.add(threshold);
+        sendAnalyticsEvent('scroll_depth', `percent_${threshold}`, {
+          percent: threshold
+        });
+      }
+    });
+  }
+
+  window.addEventListener('scroll', () => {
+    if (scrollTicking) {
+      return;
+    }
+    scrollTicking = true;
+    window.requestAnimationFrame(handleScroll);
+  });
+
+  window.addEventListener('load', handleScroll);
+  // --------------------------------------------- //
+  // Analytics Tracking End
+  // --------------------------------------------- //
+
 });
 
 // --------------------------------------------- //
